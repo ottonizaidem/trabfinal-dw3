@@ -10,6 +10,8 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="registrar.php">Registrar Pomodoro</a>
+        <?php
+        setcookie("Cookie_countdown");
+        ?> 
     </body>
 </html>
