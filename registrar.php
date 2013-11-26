@@ -12,7 +12,7 @@
                 if ((progresso + 1) < maximo) {
                     progresso = progresso + 1;
                     document.getElementById("pg").value = progresso;
-                    setTimeout("start()", 1000);
+                    setTimeout("starts()", 1000);
                 }
             }
 
