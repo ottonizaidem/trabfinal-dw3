@@ -47,9 +47,9 @@
                         seg = 60 + (time.getSeconds() - start);
                     }
 
-                    if (min === 25) {
-                        location.href = 'index.php';
-                    }
+//                    if (min === 25) {
+//                        location.href = 'index.php';
+//                    }
 
                     timeCrono = ((min < 10) ? "0" : "") + min;
                     timeCrono += ((seg < 10) ? ":0" : ":") + seg;
