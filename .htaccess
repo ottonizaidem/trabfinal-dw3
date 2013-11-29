@@ -1,0 +1,15 @@
+#Liga o motor de escrita de RL
+RewriteEngine on
+
+#diretorio do site no servidor
+RewriteBase /trabfinal-dw3/
+
+#deixa passar todos os arquivos terminados com essas extensões
+RewriteRule \.(jpg|gif|css|js)$ - [L]
+
+
+RewriteRule ^sistema - [F,L]
+
+RewriteRule ^(.+)/(.+)\.html index.php?controlador=$1&acao=$2 [L,QSA]
+
+
