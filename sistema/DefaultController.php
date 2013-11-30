@@ -21,7 +21,7 @@ class DefaultController {
         return filter_input(INPUT_REQUEST, $var);
     }
     public function getSESSION($var) {
-        return filter_input(INPUT_SESSION, $var);
+        return $_SESSION[$var];
     }
     public function getCOOKIE($var) {
         return filter_input(INPUT_COOKIE, $var);

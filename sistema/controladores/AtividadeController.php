@@ -5,7 +5,10 @@ class AtividadeController extends DefaultController {
     //put your code here
 
     public function nova() {
+        session_start();
         $visao = $this->getVisao(__CLASS__, "formAtividade", "Cadastro de Atividade");
+        $usuario = $this->getSESSION("usuarioSession");
+        $visao->setDado("u", $usuario);
         $visao->exibir();
     }
     

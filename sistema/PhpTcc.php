@@ -9,7 +9,8 @@ class PHPTcc {
     public function __construct() {
         require_once 'sistema/View.php';
         require_once 'sistema/DefaultController.php';
-        require_once 'sistema/classes/TCC.php';
+        require_once 'sistema/classes/Usuario.php';
+        require_once 'sistema/classes/UsuarioDAO.php';
         require_once 'sistema/classes/Atividade.php';
         require_once 'sistema/classes/AtividadeDAO.php';
         require_once 'sistema/classes/TCCDao.php';

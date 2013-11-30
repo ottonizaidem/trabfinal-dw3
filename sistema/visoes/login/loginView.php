@@ -1,6 +1,6 @@
 <h1></h1>
 <section id ="login-form">
-    <form class="form" action="controladores/loginController.php" method="post">
+    <form class="form" action="logar.html" method="post">
         <h2 id="form-head">Acesse sua conta:</h2>
         <label for="username">Usuário</label>
         <input type="text" class="form-control" name="username" value="" autofocus>
