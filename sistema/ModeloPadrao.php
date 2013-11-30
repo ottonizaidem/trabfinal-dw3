@@ -66,6 +66,7 @@
                 </ul>
                 <h3 class="muted">Projeto Tomato</h3>
             </div>
+            <hr>
             <?php
                 $this->exibirArquivoDeVisao();
             ?>
