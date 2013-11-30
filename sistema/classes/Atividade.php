@@ -29,6 +29,13 @@ class Atividade {
     public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
+    
+    function __construct($id_atividade, $descricao, $usuario) {
+        $this->id_atividade = $id_atividade;
+        $this->descricao = $descricao;
+        $this->usuario = $usuario;
+    }
+
 
 
 }
