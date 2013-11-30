@@ -56,25 +56,19 @@
             }
         </style>
     </head>
-    <body class="">
+    <body class="" onload="starts();">
         <div class="container-narrow">
             <div class="masthead">
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="../Home/index.html">Home</a></li>
+                    <li><a href="../Login/login.html">Login</a></li>
                     <li><a href="#">Sobre</a></li>
                 </ul>
                 <h3 class="muted">Projeto Tomato</h3>
             </div>
             <?php
-            $this->exibirArquivoDeVisao();
+                $this->exibirArquivoDeVisao();
             ?>
-
-            <!--        <ul>
-                        <li><a href="<?= $this->link("Home") ?>">HOME</a></li>
-                        <li><a href="<?= $this->link("TCC", "index") ?>">TCC</a></li>
-                        <li><a href="<?= $this->link("TCC", "novo") ?>">NOVO TCC</a></li>
-                    </ul>-->
             <hr>
             <div class="footer">
                 <p>&copy; Company OttoniZaidem 2013</p>

@@ -1,18 +1,25 @@
+
 <?php
 
-class AtividadeController extends DefaultController {
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+/**
+ * Description of TomatoController
+ *
+ * @author Aparecida
+ */
+class TomatoController extends DefaultController{
     //put your code here
-
-    public function nova() {
+        public function registra() {
         session_start();
-        $visao = $this->getVisao(__CLASS__, "formAtividade", "Cadastro de Atividade");
-        $usuario = $this->getSESSION("usuarioSession");
-        $visao->setDado("u", $usuario);
+        $visao = $this->getVisao(__CLASS__, "registra", "Registro de Tomato");
         $visao->exibir();
     }
     
-    public function cadastrar(){
+    public function grava(){
         $id_usuario = 1;
         $descricao = $this->getPOST("cpDescricao");
         
@@ -22,10 +29,10 @@ class AtividadeController extends DefaultController {
         
         $daoAtividade = new AtividadeDAO();
         $daoAtividade->salvar($atividade);
-        $visao->setDado("id_atividade");
         
         $this->sendRedirect("../Tomato/registra.html");
     }
+
 
 }
 
