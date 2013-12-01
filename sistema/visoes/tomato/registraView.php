@@ -13,12 +13,12 @@
 
 </script>
 <center>
-    <h3>Registra Tomato</h3>
-    <form name="crono">
-        <input type="text" size="7" name="face" title="Cronómetro">
+    <h3>Concentrado</h3>
+    <form name="crono" role="form">
+        <input id="formReg" size="2" name="face" title="Cronómetro">
         <script language="JavaScript">
             var timeCrono;
-            var min = 24;
+            var min = 0;
             var seg = 0;
             var startTime = new Date();
             var start = startTime.getSeconds();

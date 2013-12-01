@@ -9,7 +9,7 @@ class AtividadeController extends DefaultController {
         $visao = $this->getVisao(__CLASS__, "formAtividade", "Cadastro de Atividade");
         $usuario = $this->getSESSION("usuarioSession");
         $visao->setDado("u", $usuario);
-        
+
         $dao = new AtividadeDAO();
         $atividades = $dao->listarTodos();
 
@@ -31,6 +31,8 @@ class AtividadeController extends DefaultController {
 
         $this->sendRedirect("../Atividade/nova.html");
     }
+
+
 
 }
 

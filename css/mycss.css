@@ -197,3 +197,13 @@ ul.thumbnails {
        visibility: hidden;
     }
 }
+
+#formReg{
+    font-size: 90px;    
+}
+
+#pg {
+    margin-top: 15px;
+    height: 20px;
+    width: 280px;
+}

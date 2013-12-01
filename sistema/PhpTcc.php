@@ -13,6 +13,8 @@ class PHPTcc {
         require_once 'sistema/classes/UsuarioDAO.php';
         require_once 'sistema/classes/Atividade.php';
         require_once 'sistema/classes/AtividadeDAO.php';
+        require_once 'sistema/classes/Tomato.php';
+        require_once 'sistema/classes/TomatoDAO.php';
         require_once 'sistema/classes/TCCDao.php';
         require_once 'sistema/classes/TCCDaoMySqli.php';
     }

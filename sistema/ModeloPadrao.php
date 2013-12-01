@@ -3,7 +3,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/meu_style.css" />
+        <link rel="stylesheet" href="../css/mycss.css" />
         <link rel="stylesheet" href="../css/bootstrap.css" />
         <link rel="stylesheet" href="../css/bootstrap.min.css" />
         <script src="../js/jquery.min.js"></script> 
