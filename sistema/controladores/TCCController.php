@@ -7,18 +7,6 @@ class TCCController extends DefaultController {
     }
 
     public function novo() {
-//        $titulo = null;
-//        $autor = null;        
-//        if(key_exists("titulo", $_POST))
-//        {
-//            $titulo = $_POST["titulo"];
-//        }
-//        
-//        if(isset($_POST["autor"]))
-//        {
-//            $autor = $_POST["autor"];
-//        }
-//$defesa = filter_input(INPUT_POST, "defesa");
 
         $novo_tcc = new TCC(
                 $titulo = $this->getPOST("titulo"), $autor = $this->getPOST("autor"), $defesa = $this->getPOST("defesa"), $resumo = $this->getPOST("resumo")

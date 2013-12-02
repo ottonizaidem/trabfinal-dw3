@@ -8,7 +8,6 @@ class LoginController extends DefaultController {
     }
 
     public function logar() {
-        ob_start();
         session_start();
         $username = $this->getPOST("username");
         $password = $this->getPOST("password");
@@ -20,6 +19,12 @@ class LoginController extends DefaultController {
             $_SESSION['user'] = serialize($usuario);
             $this->sendRedirect("../Atividade/nova.html");
         }
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        $this->sendRedirect("../Home/index.html");
     }
 
 }

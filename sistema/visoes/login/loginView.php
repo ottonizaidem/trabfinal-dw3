@@ -1,4 +1,3 @@
-<h1></h1>
 <section id ="login-form">
     <form class="form" action="logar.html" method="post">
         <h2 id="form-head">Acesse sua conta:</h2>

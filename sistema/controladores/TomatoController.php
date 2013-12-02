@@ -13,13 +13,6 @@
  */
 class TomatoController extends DefaultController {
 
-//    //put your code here
-//    public function registra() {
-//        session_start();
-//        $visao = $this->getVisao(__CLASS__, "registra", "Registro de Tomato");
-//        $visao->exibir();
-//    }
-
     public function grava() {
         $id_usuario = 1;
         $descricao = $this->getPOST("cpDescricao");
@@ -46,8 +39,6 @@ class TomatoController extends DefaultController {
         $horaNovaFormatada = date("H:i:s", $horaNova);
         // Mostro na tela
         //echo $horaNovaFormatada;
-        echo $horaNovaFormatada;
-
         $dt_fim = date("Y-m-d " . "$horaNovaFormatada");
         $status = "T";
 
@@ -55,9 +46,9 @@ class TomatoController extends DefaultController {
 
         $tomatoDAO = new TomatoDAO();
         $tomatoDAO->salvar($tomato);
-        
-       $id_ultimo_tomato =  $tomatoDAO->listarUltimoRegistro($id_atividade);
-        
+
+        $id_ultimo_tomato = $tomatoDAO->listarUltimoRegistro($id_atividade);
+
         $visao = $this->getVisao(__CLASS__, "registra", "Registro de Tomato");
         $visao->setDado("id_tomato", $id_ultimo_tomato);
         $visao->exibir();
