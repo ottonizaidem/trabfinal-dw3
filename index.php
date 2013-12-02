@@ -1,9 +1,8 @@
 <?php
 
 //Ponto de Acesso Central
+require_once 'sistema/PhpTomato.php'; // importando o pacote. 
 
-require_once 'sistema/PhpTcc.php'; // importando o pacote. 
+$PhpTomato = new PhpTomato(); //cria um objeto main   
 
-$phptcc = new PhpTcc(); //cria um objeto main   
-
-$phptcc->executar(); //executa o sistema
+$PhpTomato->executar(); //executa o sistema

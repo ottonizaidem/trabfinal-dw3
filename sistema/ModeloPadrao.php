@@ -22,7 +22,7 @@ if (session_start()) {
         <!--[if lt IE 9]>
             <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
         <![endif]-->
-        <title>Php Tcc: <?php $this->imprimeTitulo() ?></title>
+        <title>Tomato | <?php $this->imprimeTitulo() ?></title>
     </head>
     <body class="" onload="starts();">
         <div class="container-narrow">

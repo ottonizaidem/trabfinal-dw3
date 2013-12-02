@@ -1,11 +1,11 @@
 <?php
 
-class PHPTcc {
+class PhpTomato {
 
     private $controladorNome = null;
     private $controladorAcao = null;
     private $controlador = null;
-    
+
     public function __construct() {
         require_once 'sistema/View.php';
         require_once 'sistema/DefaultController.php';
@@ -15,19 +15,17 @@ class PHPTcc {
         require_once 'sistema/classes/AtividadeDAO.php';
         require_once 'sistema/classes/Tomato.php';
         require_once 'sistema/classes/TomatoDAO.php';
-        require_once 'sistema/classes/TCCDao.php';
-        require_once 'sistema/classes/TCCDaoMySqli.php';
     }
 
     public function executar() {
         $this->lerParametros();
         $this->carregarControlador();
-        $this->executarAcaoDoControlador(); 
+        $this->executarAcaoDoControlador();
     }
 
     //Saber qual controlador acessar e qual ação o controlador vai executar, recebe por get
     protected function lerParametros() {
-        
+
         //pegar os dados de entrada e filtra os dados que não estão no contexto
         //pega do get a variavel 'controlador'
         $this->controladorNome = filter_input(INPUT_GET, 'controlador', FILTER_SANITIZE_SPECIAL_CHARS); //pegando o parametro na URL 
@@ -56,13 +54,10 @@ class PHPTcc {
             throw new Exception("A classe '$controladorClasse' não foi encontrada   !");
         }
     }
-    
-    
-    
+
     protected function executarAcaoDoControlador() {
         if (method_exists($this->controlador, $this->controladorAcao)) { // Verifica se contem a acao dentro deste objeto
             //call_user_method($this->controladorAcao,  $this->controlador); //chamando o metodo depois o objeto
-            
             $acao = $this->controladorAcao;
             $this->controlador->$acao();
         } else {
@@ -70,6 +65,4 @@ class PHPTcc {
         }
     }
 
-    
-    
 }
