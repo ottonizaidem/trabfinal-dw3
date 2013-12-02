@@ -5,11 +5,10 @@ class AtividadeController extends DefaultController {
     //put your code here
 
     public function nova() {
+        ob_start();
         session_start();
+        $user = unserialize($_SESSION['user']);
         $visao = $this->getVisao(__CLASS__, "formAtividade", "Cadastro de Atividade");
-        $usuario = $this->getSESSION("usuarioSession");
-        $visao->setDado("u", $usuario);
-
         $dao = new AtividadeDAO();
         $atividades = $dao->listarTodos();
 
@@ -19,20 +18,20 @@ class AtividadeController extends DefaultController {
     }
 
     public function cadastrar() {
-        $id_usuario = 1;
+        ob_start();
+        session_start();
+        $user = unserialize($_SESSION['user']);
         $descricao = $this->getPOST("cpDescricao");
 
         $atividade = new Atividade();
         $atividade->setDescricao($descricao);
-        $atividade->setUsuario($id_usuario);
+        $atividade->setUsuario($user->getId_usuario());
 
         $daoAtividade = new AtividadeDAO();
         $daoAtividade->salvar($atividade);
 
         $this->sendRedirect("../Atividade/nova.html");
     }
-
-
 
 }
 
