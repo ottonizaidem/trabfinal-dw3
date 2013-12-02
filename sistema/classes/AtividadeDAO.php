@@ -15,7 +15,7 @@ class AtividadeDAO {
     function salvar($atividade) {
         $query = $this->conexao->query("
             INSERT INTO tb_atividade_tomato(descricao, tb_usuario_id_usuario)
-            VALUES ('{$atividade->getDescricao()}', 1)");
+            VALUES ('{$atividade->getDescricao()}', {$atividade->getUsuario()})");
 
         if (!$query) {
 
