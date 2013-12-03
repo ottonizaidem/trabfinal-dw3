@@ -1,3 +1,5 @@
+<?php $datainicio = $this->getDado("data_inicio");?>
+
 <script type="text/javascript">
     var progresso = new Number();
     var maximo = new Number();
@@ -18,37 +20,36 @@
             <input id="formReg" size="2" name="face" title="Cronómetro">
             <script language="JavaScript">
                 var timeCrono;
-                var min = 24;
+                var min = 0;
                 var seg = 0;
-                var startTime = new Date();
-                var start = startTime.getSeconds();
+                var start = (<?php echo $datainicio;?>);
+                //var start = startTime.getTime();
                 StartCrono();
                 function StartCrono() {
-                    if (seg + 1 > 59) {
-                        min += 1;
-                    }
-                    if (min > 59) {
-                        min = 0;
-                        hor += 1;
-                    }
                     var time = new Date();
-                    if (time.getSeconds() >= start) {
-                        seg = time.getSeconds() - start;
+                    if (time.getTime() >= start) {
+                        seg = Math.round(time.getTime()/1000) - start;
+                        var min2 = Math.round(seg/60);
+                        var seg2 = seg - min2*60;
+                        console.dir(seg);
+                        console.dir(min2);
+                        console.dir(seg2);
                     }
                     else {
                         seg = 60 + (time.getSeconds() - start);
                     }
 
-                    if (min === 25) {
+                    if (min > 25) {
                         location.href = '../Tomato/status.html?id=<?php echo $this->getDado("id_tomato"); ?>';
                     }
 
                     timeCrono = ((min < 10) ? "0" : "") + min;
                     timeCrono += ((seg < 10) ? ":0" : ":") + seg;
-                    document.crono.face.value = timeCrono;
+                    document.crono.face.value = min2 + ": " + seg2;
                     setTimeout("StartCrono()", 1000);
                 }
             </script>
         </form>
         <progress id="pg" max="1500"></progress>
+        
 </center>
