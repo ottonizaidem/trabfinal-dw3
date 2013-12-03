@@ -13,12 +13,15 @@ class Tomato {
     private $status;
     private $id_atividade;
     
-    function __construct($dt_inicio, $dt_fim, $status, $id_atividade) {
+    function __construct($id_tomato=null, $dt_inicio=null, $dt_fim=null, $status=null, $id_atividade=null) {
+        $this->id_tomato = $id_tomato;
         $this->dt_inicio = $dt_inicio;
         $this->dt_fim = $dt_fim;
         $this->status = $status;
         $this->id_atividade = $id_atividade;
     }
+
+    
 
     
     public function getId_tomato() {

@@ -54,7 +54,7 @@
         <progress id="pg" max="300"></progress>
 </center>
 
-<!--<h4>Status do Tomato</h4>
+<h4>Status do Tomato</h4>
 <form class="form" action="" method="post">
     <label class="radio">
         <input type="radio" name="optionsRadios" id="optionsRadios1" value="tomato" checked>
@@ -65,4 +65,4 @@
         Podre - Se ocorreu interrupções.
     </label>
     <button class="btn btn-primary" type="submit">Registrar</button>
-</form>-->
+</form>
