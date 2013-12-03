@@ -48,12 +48,9 @@ class Usuario {
         $this->senha = $senha;
     }
 
-    function __construct($id_usuario, $nome, $empresa, $user) {
-        $this->id_usuario = $id_usuario;
-        $this->nome = $nome;
-        $this->empresa = $empresa;
-        $this->user = $user;
-    }
+function __construct() {
+       
+   }
 
     
 }
