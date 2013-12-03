@@ -21,13 +21,23 @@ class PhpTomato {
         $this->lerParametros();
         $this->carregarControlador();
         $this->executarAcaoDoControlador();
+        $this->recuperaSession();
     }
 
-    //Saber qual controlador acessar e qual ação o controlador vai executar, recebe por get
+    public function recuperaSession() {
+        if (session_start()) {
+            $user = $_SESSION['user'];
+            return $user;
+        } else {
+            return null;
+        }
+    }
+
+//Saber qual controlador acessar e qual ação o controlador vai executar, recebe por get
     protected function lerParametros() {
 
-        //pegar os dados de entrada e filtra os dados que não estão no contexto
-        //pega do get a variavel 'controlador'
+//pegar os dados de entrada e filtra os dados que não estão no contexto
+//pega do get a variavel 'controlador'
         $this->controladorNome = filter_input(INPUT_GET, 'controlador', FILTER_SANITIZE_SPECIAL_CHARS); //pegando o parametro na URL 
         if (!$this->controladorNome) {
             $this->controladorNome = "Home"; //Padrão o controlador Home
@@ -39,7 +49,7 @@ class PhpTomato {
         }
     }
 
-    //Varear o disco, encontrar a pasta, instaciar o controlador
+//Varear o disco, encontrar a pasta, instaciar o controlador
     protected function carregarControlador() {
         $controladorArquivo = "sistema/controladores/{$this->controladorNome}Controller.php"; // procurando um arquivo
         if (file_exists($controladorArquivo)) {//se achar o arquivo
@@ -57,7 +67,7 @@ class PhpTomato {
 
     protected function executarAcaoDoControlador() {
         if (method_exists($this->controlador, $this->controladorAcao)) { // Verifica se contem a acao dentro deste objeto
-            //call_user_method($this->controladorAcao,  $this->controlador); //chamando o metodo depois o objeto
+//call_user_method($this->controladorAcao,  $this->controlador); //chamando o metodo depois o objeto
             $acao = $this->controladorAcao;
             $this->controlador->$acao();
         } else {

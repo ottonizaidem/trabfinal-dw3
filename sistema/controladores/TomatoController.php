@@ -1,16 +1,5 @@
 
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of TomatoController
- *
- * @author Aparecida
- */
 class TomatoController extends DefaultController {
 
     public function grava() {
@@ -42,15 +31,27 @@ class TomatoController extends DefaultController {
         $dt_fim = date("Y-m-d " . "$horaNovaFormatada");
         $status = "T";
 
-        $tomato = new Tomato($dt_inicio, $dt_fim, $status, $id_atividade);
+        //$tomato = new Tomato($dt_inicio, $dt_fim, $status, $id_atividade);
 
         $tomatoDAO = new TomatoDAO();
-        $tomatoDAO->salvar($tomato);
+        //$tomatoDAO->salvar($tomato);
+        //$tomatoDAO->listarUltimaDataInicio($id_atividade);
+        $tomato = $tomatoDAO->listarUltimaDataFim($id_atividade);
+        if($tomato != null){
+            $dataInicio = $tomato->getDt_inicio();
+        }else
+        {
+            $tomato = new Tomato(null, $dt_inicio, $dt_fim, $status, $id_atividade);
+        }
+        
+        
+        
 
         $id_ultimo_tomato = $tomatoDAO->listarUltimoRegistro($id_atividade);
 
         $visao = $this->getVisao(__CLASS__, "registra", "Registro de Tomato");
         $visao->setDado("id_tomato", $id_ultimo_tomato);
+        $visao->setDado("data_inicio", $dataInicio);
         $visao->exibir();
 
         //$this->sendRedirect("../Tomato/registra.html");
