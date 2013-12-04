@@ -20,7 +20,7 @@ class TomatoController extends DefaultController {
         $id_atividade = $this->getGET("id");
 
         $tomatoDAO = new TomatoDAO();
-        
+
         //$tomatoDAO->listarUltimaDataInicio($id_atividade);
         $tomato = $tomatoDAO->listarUltimaDataFim($id_atividade);
         if ($tomato != null) {
@@ -28,7 +28,7 @@ class TomatoController extends DefaultController {
             $dataInicio = new DateTime($tomato->getDt_inicio(), $tz);
             $dataInicio->setTimezone($tz);
             $agora = new DateTime();
-            
+
             $agora->setTimezone($tz);
             $diferenca = $agora->diff($dataInicio);
             $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
@@ -49,7 +49,7 @@ class TomatoController extends DefaultController {
         $visao = $this->getVisao(__CLASS__, "status", "Registro de Tomato");
         $visao->exibir();
     }
-    
+
     //Valida o Tomato;
     public function valida() {
         $id_tomato = $this->getGET("id");
@@ -57,9 +57,6 @@ class TomatoController extends DefaultController {
         var_dump($id_tomato);
         var_dump($v);
     }
-    
-    
 
 }
 
-?>
