@@ -1,60 +1,54 @@
-<?php
-$datainicio = $this->getDado("data_inicio");
-echo $datainicio;
-?>
+<?php $datainicio = $this->getDado("data_inicio"); ?>
 
-<script type="text/javascript">
-    var progresso = new Number();
-    var maximo = new Number();
-    var progresso = 0;
-    var maximo = 1500;
-    function starts() {
-        if ((progresso + 1) < maximo) {
-            progresso = progresso + 1;
-            document.getElementById("pg").value = progresso;
-            setTimeout("starts()", 1000);
-        }
-    }
-
-</script>
 <center>
-    <h3>Concentrado</h3>
-    <form name="crono" role="form">
-        <input id="formReg" size="2" name="face" title="Cronómetro">
+    <h2>Concentrado</h2>  
+    <form name="crono">
+        <input type="text" id="formReg" size="1" name="face" title="Cronómetro">
         <script language="JavaScript">
             var timeCrono;
-            var min = 0;
-            var seg = 0;
-            var start = (<?php echo $datainicio; ?>);
-            //var start = startTime.getTime();
+            var min = <?php echo $datainicio / 60; ?>;
+            var seg = <?php echo $datainicio; ?>;
+            var startTime = new Date();
+            var start = startTime.getSeconds();
             StartCrono();
             function StartCrono() {
+                if (seg + 1 > 59) {
+                    min += 1;
+                }
+                if (min > 59) {
+                    min = 0;
+                    hor += 1;
+                }
                 var time = new Date();
-                if (time.getTime() >= start) {
-                    seg = Math.round(time.getTime() / 1000) - start;
-                    var min2 = Math.round(seg / 60);
-                    var seg2 = seg - min2 * 60;
-                    var time2 = new Date();
-                    
+                if (time.getSeconds() >= start) {
+                    seg = time.getSeconds() - start;
                 }
                 else {
                     seg = 60 + (time.getSeconds() - start);
                 }
+//                if (min > 25) {
+//                    location.href = '../Tomato/status.html?id=<?php echo $this->getDado("id_tomato"); ?>';
+//                }
 
-                if (min > 25) {
-                    location.href = '../Tomato/status.html?id=<?php echo $this->getDado("id_tomato"); ?>';
-                }
-                var time = new Date().getTime();
-                var date = new Date(time);
-                console.dir(date.getTime());
-
-                timeCrono = ((min < 10) ? "0" : "") + min;
-                timeCrono += ((seg < 10) ? ":0" : ":") + seg;
-                document.crono.face.value = min2 + ": " + seg2;
+                timeCrono = ((min < 10) ? "0" : "") + min.toFixed(0);
+                timeCrono += ((seg < 10) ? ":0" : ":") + seg.toFixed(0);
+                document.crono.face.value = timeCrono;
                 setTimeout("StartCrono()", 1000);
             }
         </script>
     </form>
-    <progress id="pg" max="1500"></progress>
 
+    <form method="POST" action="valida.html">
+        <input type=submit class="btn" value="Pausa">
+
+    </form>
+    <form method="POST" action="podre.html">
+
+        <input type=submit class="btn" value="Pausa">
+
+    </form>
+    <form method="POST" action="pausa.html">
+        <input type=submit class="btn" name="I" value="Pausa">
+
+    </form>
 </center>

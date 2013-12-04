@@ -1,5 +1,5 @@
-
 <?php
+
 class TomatoController extends DefaultController {
 
     public function grava() {
@@ -18,49 +18,47 @@ class TomatoController extends DefaultController {
 
     public function start() {
         $id_atividade = $this->getGET("id");
-        $dt_inicio = date("Y-m-d H:i:s");
-
-        $hora = date("H:i:s");
-
-        // Somo 5 minutos (resultado em int)
-        $horaNova = strtotime("$hora + 25 minutes");
-        // Formato o resultado
-        $horaNovaFormatada = date("H:i:s", $horaNova);
-        // Mostro na tela
-        //echo $horaNovaFormatada;
-        $dt_fim = date("Y-m-d " . "$horaNovaFormatada");
-        $status = "T";
-
-        //$tomato = new Tomato($dt_inicio, $dt_fim, $status, $id_atividade);
 
         $tomatoDAO = new TomatoDAO();
-        //$tomatoDAO->salvar($tomato);
+        
         //$tomatoDAO->listarUltimaDataInicio($id_atividade);
         $tomato = $tomatoDAO->listarUltimaDataFim($id_atividade);
-        if($tomato != null){
-            $dataInicio = $tomato->getDt_inicio();
-        }else
-        {
-            $tomato = new Tomato(null, $dt_inicio, $dt_fim, $status, $id_atividade);
+        if ($tomato != null) {
+            $tz = $timezone = new DateTimeZone("America/Sao_Paulo");
+            $dataInicio = new DateTime($tomato->getDt_inicio(), $tz);
+            $dataInicio->setTimezone($tz);
+            $agora = new DateTime();
+            
+            $agora->setTimezone($tz);
+            $diferenca = $agora->diff($dataInicio);
+            $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
+            //var_dump($dataInicio);
+            //var_dump($agora);
+            //var_dump($tomato);
+            //var_dump($segundos);
+        } else {
+            $tomato = new Tomato(null, null, null, 'T', $id_atividade);
+            $segundos = 0;
+            $tomatoDAO->salvar($tomato);
         }
-        
-        
-        
-
         $id_ultimo_tomato = $tomatoDAO->listarUltimoRegistro($id_atividade);
 
         $visao = $this->getVisao(__CLASS__, "registra", "Registro de Tomato");
         $visao->setDado("id_tomato", $id_ultimo_tomato);
-        $visao->setDado("data_inicio", $dataInicio);
+        $visao->setDado("data_inicio", $segundos);
         $visao->exibir();
-
-        //$this->sendRedirect("../Tomato/registra.html");
     }
 
     public function status() {
         $visao = $this->getVisao(__CLASS__, "status", "Registro de Tomato");
         $visao->exibir();
     }
+    public function valida() {
+        $id_tomato = $this->getPOST();
+        var_dump($id_tomato);
+    }
+    
+    
 
 }
 

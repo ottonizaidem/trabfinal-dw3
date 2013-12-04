@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/classes/Atividade.php</file>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/controladores/AtividadeController.php</file>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/ModeloPadrao.php</file>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/visoes/Atividade/formAtividadeView.php</file>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/visoes/tomato/registraView.php</file>
-            <file>file:/C:/xampp/htdocs/trabfinal-dw3/sistema/classes/AtividadeDAO.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

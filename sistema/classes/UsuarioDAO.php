@@ -23,7 +23,33 @@ class UsuarioDAO {
             throw new Exception("Usuario não encontrado!");
         }
     }
+    function salvar($usuario) {
+        $query = $this->conexao->query("
+            INSERT INTO tb_usuario( nome, empresa, user, senha)
+            VALUES ('{$usuario->getNome()}', {$usuario->getEmpresa()}', {$usuario->getUser()}',{$usuario->getSenha()}'");
+
+        if (!$query) {
+
+            throw new Exception("Erro ao Inserir Usuario!");
+        }
+    }
+    
+    function listarTodos() {
+        $lista = array();
+        $resultado = $this->conexao->query("SELECT * FROM tb_usuario");
+
+        while ($registro = $resultado->fetch_assoc()) {
+            $u = new Usuario($registro["id_usuario"],
+                             $registro["nome"],
+                             $registro["empresa"],
+                             $registro["user"],
+                             $registro["senha"]);
+            $lista[] = $u;
+        }
+        return $lista;
+    }
+
 
 }
 
-?>
+

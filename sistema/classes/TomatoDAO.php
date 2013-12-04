@@ -67,7 +67,7 @@ class TomatoDAO {
                 . "WHERE tb_atividade_tomato_id_atividade_tomato = {$id_atividade} AND dt_fim is null");
 
         while ($registro = $resultado->fetch_assoc()) {
-            $a = new Tomato($registro["id_tomato"], strtotime($registro["dt_inicio"]), $registro["dt_fim"], $registro["status"], $registro["tb_atividade_tomato_id_atividade_tomato"]);
+            $a = new Tomato($registro["id_tomato"], $registro["dt_inicio"], $registro["dt_fim"], $registro["status"], $registro["tb_atividade_tomato_id_atividade_tomato"]);
           
             return $a;
         }
