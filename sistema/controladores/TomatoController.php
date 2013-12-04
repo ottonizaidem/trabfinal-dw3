@@ -32,10 +32,6 @@ class TomatoController extends DefaultController {
             $agora->setTimezone($tz);
             $diferenca = $agora->diff($dataInicio);
             $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
-            //var_dump($dataInicio);
-            //var_dump($agora);
-            //var_dump($tomato);
-            //var_dump($segundos);
         } else {
             $tomato = new Tomato(null, null, null, 'T', $id_atividade);
             $segundos = 0;
@@ -53,9 +49,13 @@ class TomatoController extends DefaultController {
         $visao = $this->getVisao(__CLASS__, "status", "Registro de Tomato");
         $visao->exibir();
     }
+    
+    //Valida o Tomato;
     public function valida() {
-        $id_tomato = $this->getPOST();
+        $id_tomato = $this->getGET("id");
+        $v = $this->getPOST("P");
         var_dump($id_tomato);
+        var_dump($v);
     }
     
     
