@@ -21,7 +21,6 @@ class PhpTomato {
         $this->lerParametros();
         $this->carregarControlador();
         $this->executarAcaoDoControlador();
-        $this->recuperaSession();
     }
 
     public function recuperaSession() {
