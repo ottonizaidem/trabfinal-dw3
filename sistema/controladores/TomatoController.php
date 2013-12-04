@@ -3,12 +3,14 @@
 class TomatoController extends DefaultController {
 
     public function grava() {
-        $id_usuario = 1;
+        ob_start();
+        session_start();
+        $user = unserialize($_SESSION['user']);
         $descricao = $this->getPOST("cpDescricao");
 
         $atividade = new Atividade();
         $atividade->setDescricao($descricao);
-        $atividade->setUsuario($id_usuario);
+        $atividade->setUsuario($user->getId_usuario());
 
         $daoAtividade = new AtividadeDAO();
         $daoAtividade->salvar($atividade);
@@ -52,17 +54,20 @@ class TomatoController extends DefaultController {
 
     //Valida o Tomato;
     public function valida() {
+        $dao = new TomatoDAO();
         $id_tomato = $this->getGET("id");
         $valida = $this->getPOST("P");
-        
-        if($valida === "Tomato"){
-            
-        } else if ($valida === "Podre"){
-            
-        }else{
-            
+
+        if ($valida === "Tomato") {
+            $status = "T";
+            $dao->editar($status, $id_tomato);
+        } else if ($valida === "Podre") {
+            $status = "P";
+            $dao->editar($status, $id_tomato);
+        } else {
+            $visao = $this->getVisao(__CLASS__, "pausa", "Pausa");
+            $visao->exibir();
         }
-        
     }
 
 }

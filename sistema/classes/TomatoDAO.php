@@ -72,6 +72,17 @@ class TomatoDAO {
             return $a;
         }
     }
+    
+    function editar($status, $id_tomato) {
+        $query = $this->conexao->query("
+            UPDATE tb_reg_tomato SET dt_fim = CURRENT_TIMESTAMP, status = '{$status}' WHERE id_tomato = {$id_tomato}");
+
+        if (!$query) {
+            throw new Exception("Erro ao Editar o Tomato");
+        }
+    }
+    
+    
 
 }
 
