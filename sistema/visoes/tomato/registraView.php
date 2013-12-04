@@ -44,4 +44,5 @@
         <input type=submit name="P" class="btn" value="Podre">
         <input type=submit class="btn" name="P" value="Pausa">
     </form>
+    
 </center>
