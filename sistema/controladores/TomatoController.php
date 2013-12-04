@@ -28,6 +28,7 @@ class TomatoController extends DefaultController {
             $dataInicio = new DateTime($tomato->getDt_inicio(), $tz);
             $dataInicio->setTimezone($tz);
             $agora = new DateTime();
+            
             $agora->setTimezone($tz);
             $diferenca = $agora->diff($dataInicio);
             $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
