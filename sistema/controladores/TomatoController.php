@@ -53,9 +53,16 @@ class TomatoController extends DefaultController {
     //Valida o Tomato;
     public function valida() {
         $id_tomato = $this->getGET("id");
-        $v = $this->getPOST("P");
-        var_dump($id_tomato);
-        var_dump($v);
+        $valida = $this->getPOST("P");
+        
+        if($valida === "Tomato"){
+            
+        } else if ($valida === "Podre"){
+            
+        }else{
+            
+        }
+        
     }
     
     
