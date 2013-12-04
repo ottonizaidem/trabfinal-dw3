@@ -34,8 +34,7 @@
 //                if (min > 25) {
 //                    location.href = '../Tomato/status.html?id=<?php echo $this->getDado("id_tomato"); ?>';
 //                }
-                timeCrono = (hor < 10) ? "0" + hor : hor;
-                timeCrono += ((min < 10) ? "0" : ":") + min.toFixed(0);
+                timeCrono = ((min < 10) ? "0" : ":") + min.toFixed(0);
                 timeCrono += ((seg < 10) ? ":0" : ":") + seg.toFixed(0);
                 document.crono.face.value = timeCrono;
                 setTimeout("StartCrono()", 1000);

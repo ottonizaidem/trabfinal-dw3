@@ -3,12 +3,14 @@
 class TomatoController extends DefaultController {
 
     public function grava() {
-        $id_usuario = 1;
+        ob_start();
+        session_start();
+        $user = unserialize($_SESSION['user']);
         $descricao = $this->getPOST("cpDescricao");
 
         $atividade = new Atividade();
         $atividade->setDescricao($descricao);
-        $atividade->setUsuario($id_usuario);
+        $atividade->setUsuario($user->getId_usuario());
 
         $daoAtividade = new AtividadeDAO();
         $daoAtividade->salvar($atividade);
@@ -20,7 +22,7 @@ class TomatoController extends DefaultController {
         $id_atividade = $this->getGET("id");
 
         $tomatoDAO = new TomatoDAO();
-        
+
         //$tomatoDAO->listarUltimaDataInicio($id_atividade);
         $tomato = $tomatoDAO->listarUltimaDataFim($id_atividade);
         if ($tomato != null) {
@@ -28,7 +30,7 @@ class TomatoController extends DefaultController {
             $dataInicio = new DateTime($tomato->getDt_inicio(), $tz);
             $dataInicio->setTimezone($tz);
             $agora = new DateTime();
-            
+
             $agora->setTimezone($tz);
             $diferenca = $agora->diff($dataInicio);
             $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
@@ -49,23 +51,24 @@ class TomatoController extends DefaultController {
         $visao = $this->getVisao(__CLASS__, "status", "Registro de Tomato");
         $visao->exibir();
     }
-    
+
     //Valida o Tomato;
     public function valida() {
+        $dao = new TomatoDAO();
         $id_tomato = $this->getGET("id");
         $valida = $this->getPOST("P");
-        
-        if($valida === "Tomato"){
-            
-        } else if ($valida === "Podre"){
-            
-        }else{
-            
+
+        if ($valida === "Tomato") {
+            $status = "T";
+            $dao->editar($status, $id_tomato);
+        } else if ($valida === "Podre") {
+            $status = "P";
+            $dao->editar($status, $id_tomato);
+        } else {
+            $visao = $this->getVisao(__CLASS__, "pausa", "Pausa");
+            $visao->exibir();
         }
-        
     }
-    
-    
 
 }
 
