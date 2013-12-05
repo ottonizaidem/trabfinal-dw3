@@ -1,14 +1,14 @@
-<?php $pausa = 5;?>
+<?php $pausa = 0;?>
 
 <center>
     <h1>Pausa</h1>
     <form name="crono">
-        <input type="text" id="formReg" size="4" name="face" title="Cronómetro">
+        <input type="text" id="formReg" size="1" name="face" title="Cronómetro">
         <script language="JavaScript">
             var timeCrono;
             var hor = 0;
-            var min = <?php echo $pausa; ?>;
-            var seg = <?php echo $datainicio; ?>;
+            var min = <?php echo $pausa?>;
+            var seg = 0;
             var startTime = new Date();
             var start = startTime.getSeconds();
             StartCrono();

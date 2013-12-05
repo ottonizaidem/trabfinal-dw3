@@ -34,6 +34,17 @@ class TomatoDAO {
         return $lista;
     }
 
+    function getByID($id) {
+        $resultado = $this->conexao->query("SELECT * FROM tb_reg_tomato WHERE id_tomato = {$id}");
+
+        while ($registro = $resultado->fetch_assoc()) {
+            $a = new Tomato($registro["id_tomato"], $registro["dt_inicio"], $registro["dt_fim"], $registro["status"], $registro["tb_atividade_tomato_id_atividade_tomato"]);
+
+            return $a;
+        }
+        return null;
+    }
+
     function listarUltimoRegistro($id_atividade) {
         $lista = array();
         $resultado = $this->conexao->query("SELECT MAX(id_tomato) FROM tb_reg_tomato "
@@ -68,11 +79,11 @@ class TomatoDAO {
 
         while ($registro = $resultado->fetch_assoc()) {
             $a = new Tomato($registro["id_tomato"], $registro["dt_inicio"], $registro["dt_fim"], $registro["status"], $registro["tb_atividade_tomato_id_atividade_tomato"]);
-          
+
             return $a;
         }
     }
-    
+
     function editar($status, $id_tomato) {
         $query = $this->conexao->query("
             UPDATE tb_reg_tomato SET dt_fim = CURRENT_TIMESTAMP, status = '{$status}' WHERE id_tomato = {$id_tomato}");
@@ -81,8 +92,6 @@ class TomatoDAO {
             throw new Exception("Erro ao Editar o Tomato");
         }
     }
-    
-    
 
 }
 

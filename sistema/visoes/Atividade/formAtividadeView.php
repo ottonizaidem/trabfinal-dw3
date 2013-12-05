@@ -25,8 +25,6 @@ $atividades = $this->getDado("atividades");
                 <th>ID</th>
                 <th>Descrição</th>
                 <th>Start</th>
-                <th>Editar</th>
-                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -36,8 +34,6 @@ $atividades = $this->getDado("atividades");
                     <td><?php echo $item->getId_atividade() ?></td>
                     <td><?php echo $item->getDescricao() ?></td>
                     <td><a href="../Tomato/start.html?id=<?php echo $item->getId_atividade() ?>"><img src="../img/starticon.png" class="img-responsive"/></a>
-                    <td><a href="../Tomato/editar.html?id=<?php echo $item->getId_atividade() ?>"><img src="../img/edit-notes.png" class="img-responsive"/></a>
-                    <td><a href="../Tomato/excluir.html?id=<?php echo $item->getId_atividade() ?>"><img src="../img/delete.png" class="img-responsive"/></a>
                     </td>
                 </tr>
             <?php } ?>

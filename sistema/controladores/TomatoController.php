@@ -61,13 +61,29 @@ class TomatoController extends DefaultController {
         if ($valida === "Tomato") {
             $status = "T";
             $dao->editar($status, $id_tomato);
+            $tomato = $dao->getByID($id_tomato);
+            $visao = $this->getVisao(__CLASS__, "tomatoOk", "Registro OK");
+            $visao->setDado("tomato", $tomato);
+            $visao->exibir();
         } else if ($valida === "Podre") {
             $status = "P";
             $dao->editar($status, $id_tomato);
+            $tomato = $dao->getByID($id_tomato);
+            $visao = $this->getVisao(__CLASS__, "tomatoOk", "Registro OK");
+            $visao->setDado("tomato", $tomato);
+            $visao->exibir();
         } else {
             $visao = $this->getVisao(__CLASS__, "pausa", "Pausa");
             $visao->exibir();
         }
+    }
+    
+        //Valida o Tomato;
+    public function pausa() {
+        $id_tomato = $this->getGET("id");
+        $visao = $this->getVisao(__CLASS__, "pausa", "Pausa Tomato");
+        $visao->setDado("tomato", $id_tomato);
+        $visao->exibir();
     }
 
 }
