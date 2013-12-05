@@ -34,4 +34,3 @@ $tomato = $this->getDado("tomato");
 </table>
 
 <a href="../Atividade/nova.html" class="btn btn-primary" >Voltar para Atividades</a>
-<a href="pausa.html" class="btn btn-danger" >Pausa</a>

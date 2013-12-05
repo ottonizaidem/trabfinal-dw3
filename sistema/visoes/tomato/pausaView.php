@@ -1,4 +1,37 @@
-<?php $pausa = 0;?>
+<?php $pausa = 0; $tomato = $this->getDado("tomato"); ?>
+
+<h3 class="text-center">Detalhes do Tomato</h3>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+            <th>Status</th>
+            <th>Atividade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?php echo $tomato->getId_tomato() ?></td>
+            <td><?php echo $tomato->getDt_inicio() ?></td>
+            <td><?php echo "-" ?></td>
+            <td><?php 
+                if ($tomato->getStatus() === "T") {
+                    echo "Tomate";
+                }else if($tomato->getStatus() === "P"){
+                    echo "Podre";
+                }else{
+                    echo "Em Pausa";
+                }
+                ?></td>
+            <td><?php echo $tomato->getId_atividade() ?></td>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <center>
     <h1>Pausa</h1>
