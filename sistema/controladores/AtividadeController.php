@@ -10,7 +10,7 @@ class AtividadeController extends DefaultController {
         $user = unserialize($_SESSION['user']);
         $visao = $this->getVisao(__CLASS__, "formAtividade", "Cadastro de Atividade");
         $dao = new AtividadeDAO();
-        $atividades = $dao->listarTodos();
+        $atividades = $dao->listarPorUser($user->getId_usuario());
 
         $visao->setDado("atividades", $atividades);
 

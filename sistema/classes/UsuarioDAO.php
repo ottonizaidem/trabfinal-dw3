@@ -25,8 +25,7 @@ class UsuarioDAO {
     }
     function salvar($usuario) {
         $query = $this->conexao->query("
-            INSERT INTO tb_usuario( nome, empresa, user, senha)
-            VALUES ('{$usuario->getNome()}', {$usuario->getEmpresa()}', {$usuario->getUser()}',{$usuario->getSenha()}'");
+            INSERT INTO tb_usuario( nome, empresa, user, senha) VALUES ('{$usuario->getNome()}', '{$usuario->getEmpresa()}', '{$usuario->getUser()}', '{$usuario->getSenha()}')");
 
         if (!$query) {
 

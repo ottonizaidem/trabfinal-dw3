@@ -33,6 +33,18 @@ class AtividadeDAO {
         }
         return $lista;
     }
+    
+    function listarPorUser($id) {
+        $lista = array();
+        $resultado = $this->conexao->query("SELECT * FROM tb_atividade_tomato WHERE tb_usuario_id_usuario = {$id}");
+
+        while ($registro = $resultado->fetch_assoc()) {
+            $a = new Atividade($registro["id_atividade_tomato"], $registro["descricao"], $registro["tb_usuario_id_usuario"]);
+            $lista[] = $a;
+        }
+        return $lista;
+    }
+    
     function getById($id) {
         $resultado = $this->conexao->query("SELECT * FROM tb_atividade_tomato WHERE id_atividade_tomato = {$id} ");
 

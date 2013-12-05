@@ -36,7 +36,7 @@ class UsuarioController extends DefaultController {
 
      if ($usuario) {
             $_SESSION['user'] = serialize($usuario);
-            $this->sendRedirect("../Atividade/nova.html");
+            $this->sendRedirect("../Login/login.html");
         }
     }
 
