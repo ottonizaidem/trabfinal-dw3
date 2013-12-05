@@ -35,7 +35,7 @@ class TomatoController extends DefaultController {
             $diferenca = $agora->diff($dataInicio);
             $segundos = $diferenca->format('%i') * 60 + $diferenca->format('%s');
         } else {
-            $tomato = new Tomato(null, null, null, 'T', $id_atividade);
+            $tomato = new Tomato(null, null, null, null, $id_atividade);
             $segundos = 0;
             $tomatoDAO->salvar($tomato);
         }
@@ -78,13 +78,28 @@ class TomatoController extends DefaultController {
         }
     }
     
-        //Valida o Tomato;
+        //Valida o pause;
     public function pausa() {
         $id_tomato = $this->getGET("id");
         $visao = $this->getVisao(__CLASS__, "pausa", "Pausa Tomato");
         $visao->setDado("tomato", $id_tomato);
         $visao->exibir();
     }
+    
+    public function listarTomatos() {
+        $id_atividade = $this->getGET("id");
+        $dao = new TomatoDAO();
+        $tomatos = $dao->listarTodosAtividade($id_atividade);
+        $daoAtividade = new AtividadeDAO();
+        $atividade = $daoAtividade->getById($id_atividade);
+        
+        $visao = $this->getVisao(__CLASS__, "listarTomatos", "Detalhes Tomato");
+        $visao->setDado("tomatos", $tomatos);
+        $visao->setDado("atividade", $atividade);
+        $visao->exibir();
+    }
+    
+    
 
 }
 

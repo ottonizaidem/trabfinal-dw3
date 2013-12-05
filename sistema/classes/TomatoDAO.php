@@ -23,12 +23,12 @@ class TomatoDAO {
         $tomato->setId_tomato($this->conexao->insert_id);
     }
 
-    function listarTodos() {
+    function listarTodosAtividade($id) {
         $lista = array();
-        $resultado = $this->conexao->query("SELECT * FROM tb_reg_tomato");
+        $resultado = $this->conexao->query("SELECT * FROM tb_reg_tomato WHERE tb_atividade_tomato_id_atividade_tomato = {$id}");
 
         while ($registro = $resultado->fetch_assoc()) {
-            $a = new Tomato($registro["id_atividade_tomato"], $registro["descricao"], $registro["tb_usuario_id_usuario"]);
+            $a = new Tomato($registro["id_tomato"], $registro["dt_inicio"], $registro["dt_fim"], $registro["status"], $registro["tb_atividade_tomato_id_atividade_tomato"]);
             $lista[] = $a;
         }
         return $lista;
