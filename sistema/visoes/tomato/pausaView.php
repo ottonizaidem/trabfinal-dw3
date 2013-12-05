@@ -39,7 +39,6 @@
     <form method="POST" action="valida.html?id=<?php echo $this->getDado("id_tomato");?>">
         <input type=submit name="P" class="btn" value="Tomato">
         <input type=submit name="P" class="btn" value="Podre">
-        <input type=submit class="btn" name="P" value="Pausa">
     </form>
     
 </center>
