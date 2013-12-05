@@ -73,10 +73,12 @@ class TomatoController extends DefaultController {
             $visao->setDado("tomato", $tomato);
             $visao->exibir();
         } else {
-            $status = "1";
-            $dao->editar($status, $id_tomato);
-            $tomato = $dao->getByID($id_tomato);
+            $status = "";
             $visao = $this->getVisao(__CLASS__, "pausa", "Pausa");
+            $visao->setDado($id_tomato);
+            $tomato = $dao->getByID($id_tomato);
+            $visao->setDado("tomato", $tomato);            
+            $visao->setDado("id_tomato", $id_tomato);            
             $visao->exibir();
         }
     }
